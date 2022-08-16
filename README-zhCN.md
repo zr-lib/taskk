@@ -148,14 +148,14 @@ projects:
 │    0    │  'my-vue-app'  │ [ 'npm run build:prod' ] │ 'dist'  │
 │    1    │ 'my-react-app' │ [ 'npm run build:prod' ] │ 'build' │
 └─────────┴────────────────┴──────────────────────────┴─────────┘
-[my-react-app] => ["npm run build:prod"]===start
-[my-vue-app] => ["npm run build:prod"]===start
+[my-react-app] => ["npm run build:prod"] => start
+[my-vue-app] => ["npm run build:prod"] => start
 
-[my-vue-app] => ["npm run build:prod"]===done，耗时：3.981s
+[my-vue-app] => ["npm run build:prod"] => done, used:3.981s
 
-[my-react-app] => ["npm run build:prod"]===done，耗时：6.421s
+[my-react-app] => ["npm run build:prod"] => done, used:6.421s
 
-开始生成projectsDist => /Users/xxx/Desktop/FE/taskk/_example/_example-dist
+projectsDist => [/Users/xxx/Desktop/FE/taskk/_example/_example-dist] => start
 
 /Users/xxx/Desktop/FE/taskk/_example/my-vue-app/dist
 /Users/xxx/Desktop/FE/taskk/_example/_example-dist/my-vue-app
@@ -163,7 +163,7 @@ projects:
 /Users/xxx/Desktop/FE/taskk/_example/my-react-app/build
 /Users/xxx/Desktop/FE/taskk/_example/_example-dist/my-react-app
 
-已生成projectsDist => /Users/xxx/Desktop/FE/taskk/_example/_example-dist
+projectsDist => [/Users/xxx/Desktop/FE/taskk/_example/_example-dist] => done
 
 
 开始时间: Tue Aug 16 2022 16:31:42 GMT+0800 (中国标准时间)
