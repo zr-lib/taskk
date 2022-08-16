@@ -1,5 +1,7 @@
 # taskk
 
+中文 | [English](./README.md)
+
 多进程执行多项目+项目tasks顺序执行
 
 > TODO: 代码运行图

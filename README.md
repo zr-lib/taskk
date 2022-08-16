@@ -1,5 +1,7 @@
 # taskk
 
+English | [中文](./README-zhCN.md)
+
 Multi-process execution Multi-project + Project Tasks executes in sequence
 
 The simplest `projects` configuration is as follows:
