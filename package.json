@@ -1,0 +1,38 @@
+{
+  "name": "taskk",
+  "version": "0.1.0",
+  "description": "多进程执行多项目+项目tasks顺序执行/Multi-process execution Multi-project + Project Tasks executes in sequence",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "typings": "types/index.js",
+  "bin": {
+    "taskk": "./bin/taskk.js"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "task",
+    "shell",
+    "build",
+    "dist",
+    "multi-process"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "figlet": "^1.5.2",
+    "tar": "^6.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "7",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
+}

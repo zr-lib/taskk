@@ -1,0 +1,10 @@
+_example
+_test
+
+.eslintrc
+.prettierrc
+.prettierignore
+
+.gitignore
+
+package-lock.json

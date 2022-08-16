@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "scripts": {
+    "build:dev": "cross-env BUILD_ENV=dev taskk",
+    "build:prod": "cross-env BUILD_ENV=prod taskk"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "cross-env": "^7.0.3"
+  }
+}

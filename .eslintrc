@@ -1,0 +1,18 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "eqeqeq": ["error"],
+    "no-undef": ["error"],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "always"],
+    "no-unused-vars": ["warn"]
+  },
+  "plugins": ["eslint-plugin-prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  }
+}
