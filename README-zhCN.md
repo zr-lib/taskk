@@ -4,7 +4,7 @@
 
 > TODO: 代码运行图
 
-最简单的`projescts`配置如下
+最简单的`projects`配置如下
 
 ```js
 const projects_build_prod = [
@@ -97,7 +97,7 @@ npm i -g taskk
 
 ## 使用
 
-一般用于多项目构建管理，有如下结构：
+一般用于多项目构建管理，有如下目录结构：
 
 ```
 .
@@ -236,3 +236,8 @@ exports.run_all_done = function run_all_done(task_results) {
   }
 };
 ```
+
+
+## 结尾
+
+到此结束
