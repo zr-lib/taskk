@@ -21,7 +21,11 @@
     "dist",
     "multi-process"
   ],
-  "author": "",
+  "author": "zero9527",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zr-lib/taskk.git"
+  },
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
