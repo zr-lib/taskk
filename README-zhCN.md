@@ -4,7 +4,29 @@
 
 多进程执行多项目+项目tasks顺序执行
 
-> TODO: 代码运行图
+代码运行图
+
+```mermaid
+graph LR
+A[开始] --终端输入taskk--> 
+B(taskk-tool.js) --获取config/projects--> 
+C(projects) --fork--> D[project-worker]
+```
+
+```mermaid
+graph
+A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> C2
+
+B1 --Y--> C1(check-package)
+
+C1 --> D1([config:cache_cwd+node_modules]) --无缓存--> F1(依赖下载) --> G1 & C2
+
+D1 --有缓存--> E1(解压缩) --> C2
+
+G1(压缩node_modules-worker)
+
+C2(runTasks)
+```
 
 最简单的`projects`配置如下
 
