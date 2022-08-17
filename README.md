@@ -8,24 +8,26 @@ Code running diagram
 
 ```mermaid
 graph LR
-A[Start] --type 'taskk' in terminal--> 
+A[taskk] --require--> 
 B(taskk-tool.js) --config/projects--> 
-C(projects) --fork--> D[project-worker]
+C[fork project-worker]
 ```
 
 ```mermaid
 graph
-A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> C2
+A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> runTasks
 
-B1 --Y--> C1(check-package)
+B1 --Y--> checkPackage([checkPackage -> package changed]) --Y--> depsInstall
 
-C1 --> D1([config:cache_cwd+node_modules]) --no cache--> F1(deps install) --> G1 & C2
+checkPackage --N--> B2([config:cache_cwd+node_modules]) --no cache--> depsInstall
 
-D1 --has cache--> E1(unzip) --> C2
+depsInstall --> zip-node_modules & runTasks
+B2 --has cache--> unzip(unzip node_modules cache) --> runTasks
 
-G1(zip 'node_modules'-worker)
+depsInstall(deps install)
+zip-node_modules(zip node_modules-worker)
 
-C2(runTasks)
+runTasks[runTasks]
 ```
 
 The simplest `projects` configuration is as follows:

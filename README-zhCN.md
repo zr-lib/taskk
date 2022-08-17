@@ -8,24 +8,26 @@
 
 ```mermaid
 graph LR
-A[开始] --终端输入taskk--> 
-B(taskk-tool.js) --获取config/projects--> 
-C(projects) --fork--> D[project-worker]
+A[taskk] --require--> 
+B(taskk-tool.js) --config/projects--> 
+C[fork project-worker]
 ```
 
 ```mermaid
 graph
-A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> C2
+A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> runTasks
 
-B1 --Y--> C1(check-package)
+B1 --Y--> checkPackage([checkPackage -> package有修改]) --Y--> depsInstall
 
-C1 --> D1([config:cache_cwd+node_modules]) --无缓存--> F1(依赖下载) --> G1 & C2
+checkPackage --N--> B2([config:cache_cwd+node_modules]) --无缓存--> depsInstall
 
-D1 --有缓存--> E1(解压缩) --> C2
+depsInstall --> zip-node_modules & runTasks
+B2 --有缓存--> unzip(解压缩node_modules缓存) --> runTasks
 
-G1(压缩node_modules-worker)
+depsInstall(依赖安装)
+zip-node_modules(压缩node_modules-worker)
 
-C2(runTasks)
+runTasks[runTasks]
 ```
 
 最简单的`projects`配置如下
