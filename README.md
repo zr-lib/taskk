@@ -4,6 +4,30 @@ English | [中文](./README-zhCN.md)
 
 Multi-process execution Multi-project + Project Tasks executes in sequence
 
+Code running diagram
+
+```mermaid
+graph LR
+A[Start] --type 'taskk' in terminal--> 
+B(taskk-tool.js) --config/projects--> 
+C(projects) --fork--> D[project-worker]
+```
+
+```mermaid
+graph
+A[project-worker] --> B1([config:cache_cwd+deps_install]) --N--> C2
+
+B1 --Y--> C1(check-package)
+
+C1 --> D1([config:cache_cwd+node_modules]) --no cache--> F1(deps install) --> G1 & C2
+
+D1 --has cache--> E1(unzip) --> C2
+
+G1(zip 'node_modules'-worker)
+
+C2(runTasks)
+```
+
 The simplest `projects` configuration is as follows:
 
 ```js
