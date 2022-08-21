@@ -12,9 +12,10 @@ const start = new Date();
  */
 const config = {
   spawnStdio: 'ignore',
-  node_modules: true,
+  // node_modules: true,
   deps_install: 'npm install --registry=http://registry.npmmirror.com',
   cache_cwd: path.join(process.cwd(), '_example-cache'),
+  // projectsDir: 'packages',
   projectsDist: path.resolve(process.cwd(), '_example-dist'),
   // forceUpdateCache: true,
   // errorToExit: true,

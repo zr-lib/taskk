@@ -8,7 +8,7 @@ const path = require('path');
  * @param {TaskkConfig} config 配置项
  */
 module.exports = function depsInstall(name, config) {
-  const cwd = path.join(process.cwd(), name);
+  const cwd = path.join(process.cwd(), config.projectsDir, name);
   if (!existsSync(cwd)) return Promise.reject();
 
   const [command, ...args] = config.deps_install.split(' ');

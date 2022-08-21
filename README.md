@@ -101,6 +101,7 @@ You can manually `require('taskk/types/index-en.js')`, and then `JSDoc` can be u
 | node_modules     | boolean           | no      | false       | Process `node_modules` cache and backup, etc; works when `config.cache_cwd` is in effect |
 | spawnStdio       | inherit \| ignore | no      | inherit     | `spawn` output mode of executing `tasks` (`option. stdio`); `ignore` the output of `tasks` will not be printed. At this time, only a small number of process prompts will be printed |
 | errorToExit      | boolean           | no      | false       | When `true`, when any `tasks` fails to execute, it will kill all children of the main process and exit all tasks, `run_all_done` **will not be executed** |
+| projectsDir     | string            | no      | ""          | The path of projects relative to the top level; such as `packages`, `sub-apps`, etc. |
 | projectsDist     | string            | no      | ""          | After all the projects are executed, the `output` of each item will be copied here |
 | forceUpdateCache | boolean           | no      | false       | Sometimes `node_modules` unzip from the cache directory without error, but when the project cannot run, you can **temporarily set true**; The cache will be deleted and updated after the dependency is re downloaded (remember to **set false** after success, otherwise the subsequent cache will **not work**!) |
 
@@ -219,6 +220,7 @@ const config = {
   // node_modules: true,
   deps_install: 'npm install --registry=http://registry.npmmirror.com',
   cache_cwd: path.join(process.cwd(), '_example-cache'),
+  projectsDir: '',
   projectsDist: path.resolve(process.cwd(), '_example-dist'),
   // forceUpdateCache: true,
   // errorToExit: true,

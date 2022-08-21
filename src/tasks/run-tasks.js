@@ -32,7 +32,7 @@ function spawnTask(config, name, tasks, index, callback) {
   const task = tasks[index];
   if (!task) return callback(false);
 
-  const cwd = path.resolve(process.cwd(), name);
+  const cwd = path.resolve(process.cwd(), config.projectsDir, name);
   if (!existsSync(cwd)) {
     console.warn(colors.yellow(`\n路径不存在: ${cwd}\n`));
     return callback(false);
