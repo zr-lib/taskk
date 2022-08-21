@@ -88,19 +88,19 @@ There is no need to configure `taskk` in `npm scripts`; `taskk` is available glo
 - The completed callback `run_all_done`: `taskk-tool.js` -> `run_all_done function` will be called after normal execution
 
 
-## Parameter Description
+## Parameter
 
-You can manually `require('taskk/types/index.js')`, and then `JSDoc` can be used for syntax annotation
+You can manually `require('taskk/types/index-en.js')`, and then `JSDoc` can be used for syntax annotation
 
 - `TaskkConfig`: config field type
 
 | Field            | Type              | Required | Default     | Description |
 | ---------------- | ----------------- | -------- | ----------- | --------------------------------------- |
-| cache_cwd        | string            | no       | ""          | Cache path, excluding name; And `deps_install`/`node_modules` in combination |
+| cache_cwd        | string            | no       | ""          | Cache path, without name; used with `deps_install`/`node_modules` |
 | deps_install     | string            | no       | ""          | Dependency installation command, such as `npm install`/`yarn`/`pnpm install`; Detect `package.json` update and re download dependency; If it is not configured, you need to manually download the dependency, or add a dependency download command in `tasks`; works when `config.cache_cwd` is in effect |
 | node_modules     | boolean           | no      | false       | Process `node_modules` cache and backup, etc; works when `config.cache_cwd` is in effect |
 | spawnStdio       | inherit \| ignore | no      | inherit     | `spawn` output mode of executing `tasks` (`option. stdio`); `ignore` the output of `tasks` will not be printed. At this time, only a small number of process prompts will be printed |
-| errorToExit      | boolean           | no      | false       | if `true`, when any `tasks` fails to execute, it will kill all children of the main process and exit all tasks; `run_all_done` **will not be executed** |
+| errorToExit      | boolean           | no      | false       | When `true`, when any `tasks` fails to execute, it will kill all children of the main process and exit all tasks, `run_all_done` **will not be executed** |
 | projectsDist     | string            | no      | ""          | After all the projects are executed, the `output` of each item will be copied here |
 | forceUpdateCache | boolean           | no      | false       | Sometimes `node_modules` unzip from the cache directory without error, but when the project cannot run, you can **temporarily set true**; The cache will be deleted and updated after the dependency is re downloaded (remember to **set false** after success, otherwise the subsequent cache will **not work**!) |
 
@@ -110,15 +110,15 @@ You can manually `require('taskk/types/index.js')`, and then `JSDoc` can be used
 | ------- | ------- | --------- | ------------------------------------------------ |
 | name    | string  | yes       | Keep consistent with the project folder name. When executing the `shell` command, you need to obtain the `cwd`   |
 | tasks   | string  | yes       | List of `shell` commands to be executed |
-| output  | string  | no        | The directory name of the output of the execution build, used in combination with `config.projectsdist`  |
+| output  | string  | no        | The directory name of the output of the execution build, used with `config.projectsdist`  |
 
 - `TaskResult`: Result of execution
 
 | Field     | Type    | Description     |
 | --------- | ------- | --------------- |
 | type      | string  | Execution stage flag of the task  |
-| name      | string  | project name    |
-| succeed   | boolean | success or not  |
+| name      | string  | {roject name    |
+| succeed   | boolean | Success or not  |
 
 
 ## Usage
