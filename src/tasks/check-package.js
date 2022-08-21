@@ -13,7 +13,7 @@ const { getNodeModulesFromCache } = require('./node-modules-handle.js');
 module.exports = function checkPackage(name, config) {
   if (!config.cache_cwd || !config.deps_install) return Promise.resolve();
 
-  const projects_cwd = process.cwd();
+  const projects_cwd = path.resolve(process.cwd(), config.projectsDir);
   const last_package_info = getLastPackageMtime(config.cache_cwd, name);
 
   return new Promise(async (resolve, reject) => {
@@ -54,7 +54,7 @@ module.exports = function checkPackage(name, config) {
             const text = `[${name}] => 不存在node_modules，存在缓存文件，正在从缓存目录解压`;
             console.log(colors.blue(text));
 
-            await getNodeModulesFromCache(name, config.cache_cwd);
+            await getNodeModulesFromCache(name, config);
           } else {
             const cacheStr = config.node_modules ? '不存在缓存文件，' : '';
             const text = `[${name}] => 不存在node_modules，${cacheStr}正在下载依赖`;

@@ -9,7 +9,7 @@ process.on('message', async (e) => {
     /** @type {{name: string, config: TaskkConfig}} */
     const { name, config } = e;
     if (config.cache_cwd) {
-      await updateNodeModulesCache(name, config.cache_cwd);
+      await updateNodeModulesCache(name, config);
     }
     // 父进程未退出则发通知
     if (process.send) process.send({ type: 'done' });

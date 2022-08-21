@@ -15,6 +15,7 @@ const baseConfig = {
   spawnStdio: 'inherit',
   errorToExit: false,
   forceUpdateCache: false,
+  projectsDir: '',
   projectsDist: '',
 };
 

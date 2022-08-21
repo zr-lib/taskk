@@ -101,6 +101,7 @@ npm i -g taskk
 | node_modules     | boolean           | 否    | false       | `cache_cwd`有效时起作用；处理`node_modules`缓存与备份等 |
 | spawnStdio       | inherit \| ignore | 否    | inherit     | `spawn`执行`tasks`任务的输出方式(`option.stdio`)；`ignore`则不会打印`tasks执行任务`的输出，此时只有少量的流程提示打印 |
 | errorToExit      | boolean           | 否    | false       | `true`时，任一个 `tasks` 执行失败则会杀死主进程的所有子孙进程,`run_all_done`**不会执行** |
+| projectsDir     | string            | 否    | ""          | projects相对于顶层的路径；如`packages`，`sub-apps`等 |
 | projectsDist     | string            | 否    | ""          | 全部执行完成后，`projects`每个 item 的`output`都会复制到这里来 |
 | forceUpdateCache | boolean           | 否    | false       | 有时候`node_modules`从缓存目录解压不报错，但是项目跑不起来时，此时可以**手动启用**；将删除缓存重新下载依赖后更新缓存（记住成功后需要**关掉**，否则后续缓存将**不起作用**！！！） |
 
@@ -220,6 +221,7 @@ const config = {
   // node_modules: true,
   deps_install: 'npm install --registry=http://registry.npmmirror.com',
   cache_cwd: path.join(process.cwd(), '_example-cache'),
+  projectsDir: '',
   projectsDist: path.resolve(process.cwd(), '_example-dist'),
   // forceUpdateCache: true,
   // errorToExit: true,

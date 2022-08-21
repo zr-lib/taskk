@@ -12,13 +12,12 @@ module.exports = function copyDist(config, projects) {
   if (existsSync(config.projectsDist)) execSync(`rm -rf ${config.projectsDist}`);
   mkdirSync(config.projectsDist);
 
-  const projects_cwd = process.cwd();
   console.log(colors.blue(`\nprojectsDist => [${config.projectsDist}] => start\n`));
   try {
     const success = projects.every((item) => {
       if (!item.output) return true;
 
-      const item_dist = path.resolve(item.name, item.output);
+      const item_dist = path.resolve(config.projectsDir, item.name, item.output);
       if (!existsSync(item_dist)) {
         console.warn(colors.yellow(`${item_dist} 不存在!!`));
         return false;
@@ -28,7 +27,7 @@ module.exports = function copyDist(config, projects) {
       console.log(`${item_dist}\n${target_dist}\n`);
 
       const [cp_command, ...cp_args] = `cp -r ${item_dist}/ ${target_dist}`.split(' ');
-      spawnSync(cp_command, cp_args, { cwd: projects_cwd, shell: true, stdio: config.spawnStdio });
+      spawnSync(cp_command, cp_args, { shell: true, stdio: config.spawnStdio });
       return true;
     });
 

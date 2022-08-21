@@ -13,6 +13,7 @@
  * @property {'inherit' | 'ignore'} [spawnStdio] Default `inherit`;The output method of spawn executing tasks task
  * @property {boolean} [errorToExit] Default false;
  * When `true`, any `tasks` execution failure will kill all descendant processes of the main process, `run_all_done` **will not be executed**
+ * @property {string} [projectsDir] Default ""; The path of projects relative to the top level; such as `packages`, `sub-apps`, etc.
  * @property {string} [projectsDist] After all the projects are executed, the `output` of each item will be copied here
  * @property {boolean} [forceUpdateCache] Sometimes `node_modules` unzip from the cache directory without error, but when the project cannot run, you can **temporarily set true**;
  * The cache will be deleted and updated after the dependency is re downloaded (remember to **set false** after success, otherwise the subsequent cache will **not work**!)

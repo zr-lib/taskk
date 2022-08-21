@@ -7,15 +7,16 @@ const tar = require('tar');
 /**
  * 从缓存目录解压node_modules
  * @param {string} name 当前项目名称
- * @param {string} cache_cwd 缓存目录，不包含项目name
+ * @param {TaskkConfig} config 配置
  */
-exports.getNodeModulesFromCache = async function getNodeModulesFromCache(name, cache_cwd) {
+exports.getNodeModulesFromCache = async function getNodeModulesFromCache(name, config) {
+  const { cache_cwd, projectsDir } = config;
   console.log(colors.blue(`\n[${name}] => getNodeModulesFromCache===start\n`));
   const start = Date.now();
 
-  const to_cwd = path.join(process.cwd(), name);
+  const to_cwd = path.join(process.cwd(), projectsDir, name);
   const from_target = path.join(cache_cwd, name, 'node_modules.tar.gz');
-  const to_target = path.resolve(to_cwd, 'node_modules');
+  const to_target = path.join(to_cwd, 'node_modules');
 
   if (!existsSync(from_target)) {
     console.warn(colors.red(`路径不存在: ${from_target}`));
@@ -47,13 +48,14 @@ exports.getNodeModulesFromCache = async function getNodeModulesFromCache(name, c
 /**
  * 更新缓存目录的node_modules压缩包
  * @param {string} name 当前项目名称
- * @param {string} cache_cwd 缓存目录，不包含项目name
+ * @param {TaskkConfig} config 配置
  */
-exports.updateNodeModulesCache = async function updateNodeModulesCache(name, cache_cwd) {
+exports.updateNodeModulesCache = async function updateNodeModulesCache(name, config) {
+  const { cache_cwd, projectsDir } = config;
   console.log(colors.blue(`\n[${name}] => updateNodeModulesCache===start\n`));
   const start = Date.now();
 
-  const from_cwd = path.resolve(process.cwd(), name);
+  const from_cwd = path.resolve(process.cwd(), projectsDir, name);
   const to_cwd = path.resolve(cache_cwd, name);
   const from_target = path.resolve(from_cwd, 'node_modules');
   const to_target = path.resolve(to_cwd, 'node_modules.tar.gz');
