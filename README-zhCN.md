@@ -88,7 +88,7 @@ npm i -g taskk
 - 执行完成的回调`run_all_done`: `taskk-tool.js`->`run_all_done函数`将在正常执行后调用
 
 
-## 参数说明
+## 参数
 
 可以手动`require('taskk/types/index.js')`，然后`jsDoc`语法注释时可用
 
@@ -100,7 +100,7 @@ npm i -g taskk
 | deps_install     | string            | 否    | ""          | 依赖安装命令，如`npm install`/`yarn`/`pnpm install`等；检测`package.json`更新，重新下载依赖；不配置的话，需要手动下载依赖，或者在`tasks`添加依赖下载命令；`cache_cwd`有效时起作用； |
 | node_modules     | boolean           | 否    | false       | `cache_cwd`有效时起作用；处理`node_modules`缓存与备份等 |
 | spawnStdio       | inherit \| ignore | 否    | inherit     | `spawn`执行`tasks`任务的输出方式(`option.stdio`)；`ignore`则不会打印`tasks执行任务`的输出，此时只有少量的流程提示打印 |
-| errorToExit      | boolean           | 否    | false       | `true`时，任一个 `tasks` 执行失败则会杀死主进程的所有子孙进程；`run_all_done`**不会执行** |
+| errorToExit      | boolean           | 否    | false       | `true`时，任一个 `tasks` 执行失败则会杀死主进程的所有子孙进程,`run_all_done`**不会执行** |
 | projectsDist     | string            | 否    | ""          | 全部执行完成后，`projects`每个 item 的`output`都会复制到这里来 |
 | forceUpdateCache | boolean           | 否    | false       | 有时候`node_modules`从缓存目录解压不报错，但是项目跑不起来时，此时可以**手动启用**；将删除缓存重新下载依赖后更新缓存（记住成功后需要**关掉**，否则后续缓存将**不起作用**！！！） |
 
